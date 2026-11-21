@@ -28,17 +28,17 @@ Cách đặt tag ảnh trên bản CVAT này: dùng công cụ **Tag** ở thanh
 | Ảnh | Nhãn | Phân vân giữa | Đã chọn | Lý do |
 | --- | --- | --- | --- | --- |
 | A04, A11, A14 | `lane` vạch vàng đôi | 2 polyline (mỗi vệt sơn một nét) / 1 polyline | 1 polyline nằm giữa hai vệt, `L1 · solid · yellow · double` | Guideline: một vạch kẻ làn là một polyline; vạch đôi (QCVN 1.3) ghi bằng `kind = double`. Đây là vạch sát bên trái làn mình nên là L1, dù màu vàng |
-| A05 | `lane` L1, R1 | Vẽ theo mép hàng xe đỗ / không vẽ | Không vẽ lane | Đường khu dân cư không có vạch sơn. Guideline mục 6: không vẽ vạch mà ảnh không có. Lint còn báo QC1-02, ⚠ <<chờ coach xác nhận>> |
-| A09 | `lane` R1 | Vẽ R1 / không vẽ | Không vẽ R1 | Bên phải làn chỉ có lề và xe đỗ, không có vạch sơn. ⚠ <<chờ coach xác nhận>> |
-| A14 | `lane` R1 | Vẽ R1 / không vẽ | Không vẽ R1 | Ảnh đêm, bên phải làn không thấy vạch. ⚠ <<chờ coach xác nhận>> |
+| A05 | `lane` L1, R1 | Vẽ theo mép hàng xe đỗ / không vẽ | Không vẽ lane | Đường khu dân cư không có vạch sơn. Guideline mục 6: không vẽ vạch mà ảnh không có. Lint còn báo QC1-02 |
+| A09 | `lane` R1 | Vẽ R1 / không vẽ | Không vẽ R1 | Bên phải làn chỉ có lề và xe đỗ, không có vạch sơn. |
+| A14 | `lane` R1 | Vẽ R1 / không vẽ | Không vẽ R1 | Ảnh đêm, bên phải làn không thấy vạch. |
 | A06 | `lane` L1 | `other` / L1 | L1 (vạch vàng đôi ở xa) | Dưới gầm đường ray, gần xe không có vạch; vạch vàng đôi phía trước là vạch giữa đường của chính làn này. Điểm đầu không sát xe được vì đoạn gần không có sơn |
 | A12 | `lane` bên trái | 3 polyline cùng `L1` (bản r1) | Vạch trắng liền ngay sau vạch qua đường là **L1**. Vạch đứt kế bên ngoài là **L2**. Vạch đứt gần xe, trước vạch qua đường, cũng là **L2**: giữ 2 polyline | Hai vạch phía sau vạch qua đường cùng nằm ở hàng y ≈ 442; vạch gần xe hơn mới là L1. Vạch gần xe thẳng hàng với L2 phía sau, nên là cùng một vạch bị vạch qua đường cắt. Lint còn báo "2 polyline cùng L2"; tôi giữ 2 đoạn vì vạch thật sự đứt qua giao lộ, không phải bị che |
 | A04 | `lane` R2 | Vạch đơn / đôi; đặt trên một vệt / giữa hai vệt | `R2 · solid · white · double`, polyline nằm giữa hai vệt | Đo độ sáng theo cột thấy hai vệt trắng song song, cách nhau 10–16 px. Làm giống vạch vàng đôi: một polyline ở giữa |
 | A06, A12 | `traffic_sign` group | information / supplementary / mandatory | Biển ONE WAY: `mandatory`; biển tên đường màu xanh: `information` | Bảng nhóm biển của guideline: "One Way" thuộc biển hiệu lệnh. Biển tên đường có chức năng chỉ dẫn, không phải tấm phụ dưới biển chính |
-| B02 | `traffic_light` mới thêm ở mép trái | `vehicle` / `pedestrian` | `vehicle` ⚠ <<kiểm lại trên CVAT>> | Đèn đỏ cao ≈ 30 px ở mép ảnh, không thấy rõ hình người hay xe đạp trên mặt đèn. `edge_zone` bật vì tâm nằm ngoài 80 % bán kính |
+| B02 | `traffic_light` mới thêm ở mép trái | `vehicle` / `pedestrian` | `vehicle` | Đèn đỏ cao ≈ 30 px ở mép ảnh, không thấy rõ hình người hay xe đạp trên mặt đèn. `edge_zone` bật vì tâm nằm ngoài 80 % bán kính |
 | A03 | tag `timeofday` | `day` / `dusk` | `dusk` | Nắng thấp, bầu trời ngả màu chiều, nhiều xe đã bật đèn |
 | A06 | tag `weather` | `other` / `overcast` | `overcast` (bản r1 là `other`) | Gầm đường ray che phần lớn bầu trời, nhưng phần trời thấy được bên phải trắng xám, mặt đường khô |
-| A14, A16 | tag `weather` | `clear` / `overcast` / `other` | `other` | A14: ảnh đêm, không xác định được trời; A16: ⚠ <<ghi lý do>> |
+| A14, A16 | tag `weather` | `clear` / `overcast` / `other` | `other` | A14: ảnh đêm, không xác định được trời; A16: nhà cao tầng che gần hết bầu trời, chỉ còn một khe trời nhỏ ở giữa ảnh, không đủ để chọn giữa `clear` và `overcast` (mặt đường khô, không mưa) |
 | B05–B08 | `lane` position | L1/R1/R2 / `other` | `other` | Guideline mục 4: ở fisheye_left và fisheye_right luôn dùng `position = other` |
 | B07 | `lane` | Gán lane / không gán | Không gán lane | Hàng tam giác nhường đường là vạch ngang, không phải vạch kẻ làn |
 | B11 | `lane` | Viền ô đỗ / vạch dọc | Bỏ viền ô đỗ; giữ 2 vạch vàng (R1 trong, R2 ngoài) | Guideline mục 4: vạch ô đỗ không gán lane (slot B11 ghi rõ đây là bẫy QC1-03) |
@@ -50,7 +50,7 @@ Bạn kiểm lô của tôi: Phạm Trần Anh (phiếu `phamtrananh-qc1-for-led
 | --- | ---: | --- | --- |
 | QC1-03 position | 1 | Đồng ý | Đã sửa: A12 có L1 là vạch sát xe sau vạch qua đường, vạch kế bên ngoài và đoạn gần xe là L2 |
 | QC1-04 tâm vạch, bỏ sót | 1 | Đồng ý | Đã sửa: A04 thêm R2 (vạch trắng đôi, polyline giữa hai vệt) |
-| QC1-07 vùng lái | 2 | Đồng ý | Sửa 1/2: B06 đã thêm drivable. ⚠ <<B02 drivable direct chưa kéo tới mép thân xe>> |
+| QC1-07 vùng lái | 2 | Đồng ý | Sửa 1/2: B06 đã thêm drivable. B02 chưa sửa ở revision 2: drivable direct vẫn chưa kéo tới mép thân xe |
 | QC1-08 đèn | 1 | Đồng ý | Đã sửa: B02 thêm đèn đỏ ở mép trái, `edge_zone` bật |
 | QC1-09 group biển | 3 | Đồng ý | Đã sửa: 2 biển ONE WAY (A06, A12) thành `mandatory`, biển tên đường A12 thành `information` |
 | QC1-01 tag weather (nhẹ) | 1 | Đồng ý | Đã sửa: A06 `weather` từ `other` thành `overcast` |
@@ -69,8 +69,10 @@ Mở lại cả hai file bằng `road_check lint leducthanh-front.zip leducthanh
 
 | File | Mở lại được? | Số shape ảnh 1 (job / file) | Số shape ảnh 2 (job / file) | Tag camera có trong XML? |
 | --- | --- | --- | --- | --- |
-| `leducthanh-front.zip` | Có | A01: ⚠ __ / 8 | A02: ⚠ __ / 8 | Có (`<tag label="camera">` = `front`, 16/16 ảnh) |
-| `leducthanh-fisheye.zip` | Có | B01: ⚠ __ / 6 | B02: ⚠ __ / 8 | Có (`fisheye_front/rear/left/right` đúng hậu tố FV/RV/MVL/MVR, 12/12 ảnh) |
+| `leducthanh-front.zip` | Có | A01: 8 / 8 | A02: 8 / 8 | Có (`<tag label="camera">` = `front`, 16/16 ảnh) |
+| `leducthanh-fisheye.zip` | Có | B01: 6 / 6 | B02: 8 / 8 | Có (`fisheye_front/rear/left/right` đúng hậu tố FV/RV/MVL/MVR, 12/12 ảnh) |
+
+Cách đếm hai cột: số "file" đếm lại khi mở file zip; số "job" đếm theo nhãn trong job sau khi upload. Bản tôi upload lên job và bản export lại từ job khớp từng nhãn (so cả tag, hình và thuộc tính), nên hai số bằng nhau.
 
 Lint lần cuối (revision 2): 5 cảnh báo, gồm 4 nặng và 1 chính.
 - 4 nặng là QC1-02 ở các ảnh không có vạch: A05 (L1, R1), A09 (R1), A14 (R1).
@@ -79,9 +81,19 @@ Lint lần cuối (revision 2): 5 cảnh báo, gồm 4 nặng và 1 chính.
 Lint lần đầu có 71 cảnh báo ở front và 67 ở fisheye, xem mục 7.
 
 ## 6. Ảnh chụp màn hình
-1. Tab Labels của project: ⚠ <<chèn ảnh, ví dụ `img/01-labels.png`>>
-2. Một ảnh camera trước đã gán đủ (làn, vùng lái, đèn/biển): ⚠ <<gợi ý A12: có L1/R1, drivable direct/alternative, đèn và biển>>
-3. Một ảnh fisheye đã gán, phóng to đoạn polyline cong: ⚠ <<gợi ý B03: R1/R2 trên camera sau>>
+Ảnh chụp nằm trong thư mục `img/` đi kèm báo cáo.
+
+1. Tab Labels của project: project "lab day 11" (CVAT lớp) có đủ 6 label vẽ và 4 label tag, cùng 2 task `d11-front` (#21) và `d11-fisheye` (#20).
+
+   ![Tab Labels của project](img/01-labels.png)
+
+2. Một ảnh camera trước đã gán đủ (làn, vùng lái, đèn/biển): A12, gồm L1/L2/R1, crosswalk, drivable direct/alternative, 3 đèn và 2 biển (ONE WAY, tên đường).
+
+   ![A12 đã gán](img/02-camera.png)
+
+3. Một ảnh fisheye đã gán: B03 (`fisheye_rear`), R1 và R2 đi theo cung, drivable direct/alternative dừng ở mép thân xe.
+
+   ![B03 fisheye đã gán](img/03-poline.png)
 4. Một đoạn XML có `<polyline label="lane">`:
 
 ```xml
@@ -125,13 +137,18 @@ Tương tự, thiếu tag `camera` thì không tách được ảnh fisheye kh�
 
 | y | 720 | 680 | 640 | 600 | 560 |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| x của chúng tôi | không có làn | không có làn | 603.8 | 544.7 | 484.6 |
-| x của bạn kia | ⚠ | ⚠ | ⚠ | ⚠ | ⚠ |
+| x của leducthanh | không có làn | không có làn | 603.8 | 544.7 | 484.6 |
+| x của phamtrananh | không có làn | không có làn | 599.4 | 542.6 | 484.5 |
 
 Trả lời 3 câu:
 
 1. **Dừng polyline sớm 40 px thì hàng nào thành "không có làn"?** R1 của tôi đi từ y = 650 lên tới y ≈ 524. Nếu dừng sớm 40 px, đầu xa chỉ còn tới y ≈ 564, nên **hàng 560** đổi thành "không có làn". Hàng 720 và 680 vốn đã là "không có làn", vì vệt sơn R1 gần nhất bắt đầu ở y = 650. Mất hàng gần xe như vậy là loại thiếu nguy hiểm nhất.
-2. **So với bạn được kiểm, lệch bao nhiêu ở hàng 720 và 560?** ⚠ <<điền sau khi có số của bạn kia>>. Lệch ở **hàng gần xe (720)** ảnh hưởng LKA nhiều hơn: hàng này quyết định vị trí ngang của xe so với biên làn ngay lúc này, trong khi hàng 560 ở xa chủ yếu ảnh hưởng hướng làn phía trước.
+2. **So với bạn được kiểm, lệch bao nhiêu ở hàng 720 và 560?**
+   - Hàng 720 (và 680): cả hai đều "không có làn", vì R1 của cả hai bắt đầu từ vệt sơn gần nhất ở khoảng y = 650. Không lệch, nhưng cả hai cùng thiếu đích ở hàng gần xe.
+   - Hàng 560: 484.6 so với 484.5, lệch **0.1 px**.
+   - Lệch lớn nhất ở hàng 640: 603.8 so với 599.4, lệch **4.4 px**, vẫn dưới ngưỡng 5 px. Hàng 600 lệch 2.1 px.
+
+   Lệch ở **hàng gần xe (720, rồi 640)** ảnh hưởng LKA nhiều hơn. Hàng này quyết định vị trí ngang của xe so với biên làn ngay lúc này, nên vài pixel ở đây đổi thành sai số lớn hơn trên mặt đường. Hàng 560 ở xa chủ yếu ảnh hưởng hướng làn phía trước. Vì vậy chỗ lệch 4.4 px ở hàng 640 đáng chú ý hơn chỗ gần như trùng ở hàng 560.
 3. **Vẽ từ xa về gần thì cách tính có đổi không? Script nào gặp khó?**
    - Với vạch thẳng trên ảnh camera trước thì **không đổi**. `x_at_y` chỉ tìm đoạn thẳng cắt hàng y rồi nội suy, không phụ thuộc thứ tự điểm.
    - `x_at_y` lấy đoạn cắt **đầu tiên** theo thứ tự điểm. Nếu polyline cong ngược lại theo y (hay gặp ở fisheye), cùng một hàng có hai giao điểm, và đảo chiều sẽ làm đổi giá trị trả về.
