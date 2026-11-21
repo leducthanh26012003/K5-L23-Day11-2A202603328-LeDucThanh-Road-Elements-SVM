@@ -45,7 +45,7 @@ Cách đặt tag ảnh trên bản CVAT này: dùng công cụ **Tag** ở thanh
 | B01–B12 | tag `weather` | `clear` / `overcast` | `clear` | Camera hai bên gần như không thấy trời; mặt đường khô, nắng rõ nên chọn `clear` |
 
 ## 4. Phiếu QC 1 nhận được
-Bạn kiểm lô của tôi: Phạm Trần Anh (phiếu `phamtrananh-qc1-for-leducthanh.md`; dự thảo do tôi tự kiểm rồi gửi bạn xác nhận, theo cách cặp chúng tôi làm)  Quyết định nhận được: **Rework** (1 lỗi nặng; lỗi chính 7 / 73 nhãn = 9,6 %)  
+Bạn kiểm lô của tôi: Phạm Trần Anh (phiếu `leducthanh-qc1-for-phamtrananh.md`; dự thảo do tôi tự kiểm rồi gửi bạn xác nhận, theo cách cặp chúng tôi làm)  Quyết định nhận được: **Rework** (1 lỗi nặng; lỗi chính 7 / 73 nhãn = 9,6 %)  
 | Mã lỗi | Số lỗi | Đồng ý? | Đã sửa? |
 | --- | ---: | --- | --- |
 | QC1-03 position | 1 | Đồng ý | Đã sửa: A12 có L1 là vạch sát xe sau vạch qua đường, vạch kế bên ngoài và đoạn gần xe là L2 |
